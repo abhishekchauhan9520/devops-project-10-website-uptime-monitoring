@@ -1,0 +1,2 @@
+# Check the site every 5 minutes. Use an absolute path in production.
+*/5 * * * * /opt/project-10/monitor/check_site.sh https://example.com 10 /var/log/project-10-uptime.log
