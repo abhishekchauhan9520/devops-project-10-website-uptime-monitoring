@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Bash syntax
+        run: bash -n monitor/check_site.sh tests/test_check_site.sh
+      - name: Install ShellCheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Run ShellCheck
+        run: shellcheck monitor/check_site.sh tests/test_check_site.sh
+      - name: Run tests
+        run: tests/test_check_site.sh
